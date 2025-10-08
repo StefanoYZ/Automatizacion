@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programación de citas - Clínica Dental Sonrisa Perfecta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml" />
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-teal-600 text-white p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Programación de citas</h1>
+    <a href="../../index.html" class="bg-white text-teal-600 font-semibold px-4 py-2 rounded hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75">Volver</a>
+  </header>
+  <main class="p-6 max-w-4xl mx-auto">
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Gestión de citas</h2>
+      <p class="mb-6 text-gray-700">Aquí puedes organizar y gestionar las citas de los pacientes de manera eficiente. Próximamente se añadirán funcionalidades para crear, editar y eliminar citas.</p>
+      <div class="bg-white rounded-lg shadow p-4 text-center text-teal-600 font-semibold">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-2 h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5a2 2 0 002 2z" />
+        </svg>
+        <p>Funcionalidad en desarrollo</p>
+      </div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
