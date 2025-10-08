@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Clínica Dental Sonrisa Perfecta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-teal-600 text-white p-6 shadow flex items-center">
+    <img src="assets/logo.svg" alt="Logo Clínica Dental Sonrisa Perfecta" class="w-12 h-12 mr-4" />
+    <h1 class="text-2xl font-bold">Clínica Dental Sonrisa Perfecta</h1>
+  </header>
+
+  <main class="p-8 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-6 text-gray-800">Panel de control</h2>
+    <section aria-label="Módulos disponibles" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <article class="bg-white rounded-lg shadow hover:shadow-lg transition p-6 flex flex-col items-center text-center">
+        <img src="assets/appointment_icon.svg" alt="Icono de programación de citas" class="w-20 h-20 mb-4" />
+        <h3 class="text-xl font-semibold mb-2 text-teal-700">Programación de Citas</h3>
+        <p class="text-gray-600 mb-4">Organiza y gestiona las citas de tus pacientes de forma sencilla y rápida.</p>
+        <a href="modules/appointment-scheduling/index.html" class="mt-auto inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded transition">Entrar</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="text-center text-gray-500 text-sm py-6">
+    &copy; 2024 Clínica Dental Sonrisa Perfecta
+  </footer>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
