@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar Sesión - Clínica Dental Sonrisa Perfecta</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex items-center justify-center">
+  <main class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center text-teal-700">Clínica Dental Sonrisa Perfecta</h1>
+    <form id="loginForm" class="space-y-6" novalidate>
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Usuario</label>
+        <input type="text" id="username" name="username" required aria-required="true" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" />
+        <p class="mt-1 text-sm text-red-600 hidden" id="usernameError">Por favor ingresa tu usuario.</p>
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" id="password" name="password" required aria-required="true" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500" />
+        <p class="mt-1 text-sm text-red-600 hidden" id="passwordError">Por favor ingresa tu contraseña.</p>
+      </div>
+      <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 rounded-md transition">Iniciar Sesión</button>
+      <p id="loginError" class="text-red-600 text-center text-sm mt-2 hidden">Usuario o contraseña incorrectos.</p>
+    </form>
+  </main>
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+    const loginError = document.getElementById('loginError');
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      let valid = true;
+      usernameError.classList.add('hidden');
+      passwordError.classList.add('hidden');
+      loginError.classList.add('hidden');
+
+      if (!usernameInput.value.trim()) {
+        usernameError.classList.remove('hidden');
+        valid = false;
+      }
+      if (!passwordInput.value.trim()) {
+        passwordError.classList.remove('hidden');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Validación básica simulada: usuario = paciente, contraseña = sonrisa123
+      if (usernameInput.value.trim() === 'paciente' && passwordInput.value === 'sonrisa123') {
+        window.location.href = 'index.html';
+      } else {
+        loginError.classList.remove('hidden');
+      }
+    });
+  </script>
+
+<script>
+document.getElementById('loginForm')?.addEventListener('submit', function(){
+  try{
+    const u = (document.getElementById('username')||{}).value || 'user@example.com';
+    localStorage.setItem('mvp_session', JSON.stringify({user: u, at: Date.now()}));
+  }catch(e){}
+});
+</script>
+</body>
+</html>
