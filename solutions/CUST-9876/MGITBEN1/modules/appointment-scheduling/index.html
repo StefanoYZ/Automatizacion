@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendar citas - Clínica Dental Sonrisa Perfecta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-gradient-to-r from-teal-400 to-blue-600 p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-white text-2xl font-bold">Agendar citas</h1>
+    <button onclick="window.history.back()" class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-md hover:bg-blue-100 transition" aria-label="Volver al dashboard">Volver</button>
+  </header>
+
+  <main class="flex-grow p-8 max-w-4xl mx-auto">
+    <p class="text-gray-700 text-lg">¡Hola! Soy el asistente virtual de Clínica Sonrisa Perfecta</p>
+    <section aria-label="Formulario para agendar citas" class="mt-6 bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800">Formulario de agendamiento</h2>
+      <form id="appointmentForm" class="space-y-4" novalidate>
+        <div>
+          <label for="patientName" class="block text-gray-700 font-medium mb-1">Nombre del paciente</label>
+          <input type="text" id="patientName" name="patientName" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <p class="mt-1 text-sm text-red-600 hidden" id="patientNameError">Por favor, ingrese el nombre del paciente.</p>
+        </div>
+        <div>
+          <label for="appointmentDate" class="block text-gray-700 font-medium mb-1">Fecha de la cita</label>
+          <input type="date" id="appointmentDate" name="appointmentDate" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <p class="mt-1 text-sm text-red-600 hidden" id="appointmentDateError">Por favor, seleccione una fecha válida.</p>
+        </div>
+        <div>
+          <label for="appointmentTime" class="block text-gray-700 font-medium mb-1">Hora de la cita</label>
+          <input type="time" id="appointmentTime" name="appointmentTime" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <p class="mt-1 text-sm text-red-600 hidden" id="appointmentTimeError">Por favor, seleccione una hora válida.</p>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">Agendar</button>
+      </form>
+      <p id="successMessage" class="mt-4 text-green-600 font-semibold hidden">Cita agendada con éxito.</p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('appointmentForm');
+    const patientNameInput = document.getElementById('patientName');
+    const appointmentDateInput = document.getElementById('appointmentDate');
+    const appointmentTimeInput = document.getElementById('appointmentTime');
+    const patientNameError = document.getElementById('patientNameError');
+    const appointmentDateError = document.getElementById('appointmentDateError');
+    const appointmentTimeError = document.getElementById('appointmentTimeError');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      let valid = true;
+      successMessage.classList.add('hidden');
+
+      if (!patientNameInput.value.trim()) {
+        patientNameError.classList.remove('hidden');
+        valid = false;
+      } else {
+        patientNameError.classList.add('hidden');
+      }
+
+      if (!appointmentDateInput.value) {
+        appointmentDateError.textContent = 'Por favor, seleccione una fecha válida.';
+        appointmentDateError.classList.remove('hidden');
+        valid = false;
+      } else {
+        const selectedDate = new Date(appointmentDateInput.value);
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        if (selectedDate < today) {
+          appointmentDateError.textContent = 'La fecha no puede ser anterior a hoy.';
+          appointmentDateError.classList.remove('hidden');
+          valid = false;
+        } else {
+          appointmentDateError.classList.add('hidden');
+        }
+      }
+
+      if (!appointmentTimeInput.value) {
+        appointmentTimeError.classList.remove('hidden');
+        valid = false;
+      } else {
+        appointmentTimeError.classList.add('hidden');
+      }
+
+      if (valid) {
+        successMessage.classList.remove('hidden');
+        form.reset();
+      }
+    });
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
