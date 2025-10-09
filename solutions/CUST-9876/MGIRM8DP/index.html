@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Clínica Dental Sonrisa Perfecta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-teal-600 text-white p-6 shadow flex items-center justify-between">
+
+<button onclick="logout()" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition">
+  Cerrar sesión
+</button>
+
+    <h1 class="text-3xl font-bold">Clínica Dental Sonrisa Perfecta</h1>
+    <p class="text-lg italic">¡Hola! Soy el asistente virtual de Clínica Sonrisa Perfecta</p>
+  </header>
+  <main class="p-8 max-w-7xl mx-auto">
+    <section aria-label="Módulos disponibles" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <article class="bg-white rounded-lg shadow-md hover:shadow-xl transition p-6 flex flex-col items-center text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-teal-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5a2 2 0 002 2z" />
+        </svg>
+        <h2 class="text-xl font-semibold mb-2">Agenda de Citas</h2>
+        <p class="text-gray-600">Organiza y gestiona tus citas dentales de forma fácil y rápida.</p>
+        <a href="modules/appointment-scheduling/index.html" class="mt-4 inline-block bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 transition">Ir al módulo</a>
+      </article>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+<script>
+  // Redirige al login si no hay sesión
+  (function(){
+    try {
+      const s = JSON.parse(localStorage.getItem('mvp_session') || 'null');
+      if (!s || !s.user) {
+        window.location.href = 'login.html';
+      }
+    } catch(e) {
+      window.location.href = 'login.html';
+    }
+  })();
+
+  // Cerrar sesión
+  window.logout = function() {
+    try { localStorage.removeItem('mvp_session'); } catch(e){}
+    window.location.href = 'login.html';
+  };
+</script>
+</body>
+</html>
