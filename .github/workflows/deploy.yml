@@ -45,7 +45,7 @@ jobs:
           mkdir -p _site
           # Copiamos todo solutions/ para que las URLs queden /solutions/...
           cp -R solutions _site/ || true
-          # Evitar que GitHub Pages (Jekyll) oculte carpetas que empiezan con _
+          # Evitar que GitHub Pages (Jekylll) oculte carpetas que empiezan con _
           touch _site/.nojekyll
           # Metadata de despliegue (útil para debug)
           {
