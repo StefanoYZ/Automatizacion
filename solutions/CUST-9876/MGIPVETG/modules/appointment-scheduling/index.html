@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Citas - Clínica Dental Sonrisa Perfecta</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen text-gray-900">
+  <header class="bg-white bg-opacity-90 backdrop-blur-md shadow-md py-4 px-6 flex items-center justify-between">
+    <h1 class="text-2xl font-bold text-teal-700">Gestión de Citas</h1>
+    <button onclick="window.history.back()" aria-label="Volver" class="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver
+    </button>
+  </header>
+  <main class="p-8 max-w-4xl mx-auto bg-white bg-opacity-90 rounded-lg shadow-lg mt-8">
+    <section aria-label="Descripción del módulo">
+      <p class="text-gray-800 text-lg">En este módulo puedes programar, modificar y administrar tus citas dentales de forma sencilla y rápida. Mantén el control de tus visitas y recibe recordatorios oportunos.</p>
+    </section>
+    <section aria-label="Imagen ilustrativa" class="mt-6 flex justify-center">
+      <img src="https://images.unsplash.com/photo-1588776814546-6a9c7b2f7d3a?auto=format&fit=crop&w=600&q=80" alt="Calendario y reloj para citas" class="rounded-lg shadow-md max-w-full h-auto" />
+    </section>
+  </main>
+  <script>
+    feather.replace();
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
