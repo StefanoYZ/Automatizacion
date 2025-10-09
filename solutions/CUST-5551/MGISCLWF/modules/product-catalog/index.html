@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Productos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 min-h-screen text-gray-100">
+  <header class="bg-white bg-opacity-20 backdrop-blur-md shadow-md py-6 px-6 flex items-center justify-between">
+    <h1 class="text-3xl font-bold">Catálogo de Productos</h1>
+    <a href="../../index.html" class="bg-white bg-opacity-30 hover:bg-opacity-50 text-gray-900 font-semibold py-2 px-4 rounded-md transition">Volver</a>
+  </header>
+
+  <main class="container mx-auto px-6 py-10">
+    <p class="text-lg">Aquí puedes explorar y administrar todos los productos disponibles en Tienda NovaTech.</p>
+    <section class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <article class="bg-white bg-opacity-20 rounded-lg p-4 shadow-md hover:bg-opacity-30 transition">
+        <h2 class="text-xl font-semibold mb-2">Producto Ejemplo 1</h2>
+        <p>Descripción breve del producto ejemplo 1.</p>
+      </article>
+      <article class="bg-white bg-opacity-20 rounded-lg p-4 shadow-md hover:bg-opacity-30 transition">
+        <h2 class="text-xl font-semibold mb-2">Producto Ejemplo 2</h2>
+        <p>Descripción breve del producto ejemplo 2.</p>
+      </article>
+      <article class="bg-white bg-opacity-20 rounded-lg p-4 shadow-md hover:bg-opacity-30 transition">
+        <h2 class="text-xl font-semibold mb-2">Producto Ejemplo 3</h2>
+        <p>Descripción breve del producto ejemplo 3.</p>
+      </article>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
