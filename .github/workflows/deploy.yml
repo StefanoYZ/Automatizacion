@@ -17,10 +17,6 @@ on:
         description: "Estado (ej. activo)"
         required: false
         default: "activo"
-      modules:
-        description: "Módulos incluidos (texto)"
-        required: false
-        default: ""
       email:
         description: "Email del cliente"
         required: false
@@ -58,7 +54,6 @@ jobs:
             echo "Cliente ID: ${{ inputs.cliente_id }}"
             echo "Nombre: ${{ inputs.nombre }}"
             echo "Estado: ${{ inputs.estado }}"
-            echo "Módulos: ${{ inputs.modules }}"
             echo "Email: ${{ inputs.email }}"
           } > _site/DEPLOY_INFO.txt
 
