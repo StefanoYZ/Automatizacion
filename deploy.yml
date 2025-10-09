@@ -1,0 +1,79 @@
+name: Deploy Pages
+
+on:
+  # Permite dispararlo desde n8n vía:
+  # POST /repos/{owner}/{repo}/actions/workflows/deploy.yml/dispatches
+  workflow_dispatch:
+    inputs:
+      cliente_id:
+        description: "ID del cliente (ej. CUST-9876)"
+        required: false
+        default: ""
+      nombre:
+        description: "Nombre del negocio"
+        required: false
+        default: ""
+      estado:
+        description: "Estado (ej. activo)"
+        required: false
+        default: "activo"
+      modules:
+        description: "Módulos incluidos (texto)"
+        required: false
+        default: ""
+      email:
+        description: "Email del cliente"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # Construimos el sitio a partir de la carpeta solutions/
+      - name: Prepare static site
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          # Copiamos todo solutions/ para que las URLs queden /solutions/...
+          cp -R solutions _site/ || true
+          # Evitar que GitHub Pages (Jekyll) oculte carpetas que empiezan con _
+          touch _site/.nojekyll
+          # Metadata de despliegue (útil para debug)
+          {
+            echo "Deployed: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "Commit: ${GITHUB_SHA}"
+            echo "Cliente ID: ${{ inputs.cliente_id }}"
+            echo "Nombre: ${{ inputs.nombre }}"
+            echo "Estado: ${{ inputs.estado }}"
+            echo "Módulos: ${{ inputs.modules }}"
+            echo "Email: ${{ inputs.email }}"
+          } > _site/DEPLOY_INFO.txt
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
