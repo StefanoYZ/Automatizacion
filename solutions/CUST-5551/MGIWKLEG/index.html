@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-indigo-700 text-white p-6 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Tienda NovaTech</h1>
+      <p class="text-sm opacity-80">¡Hola! Soy el asistente virtual de Tienda NovaTech</p>
+    </div>
+  </header>
+  <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <!-- Card módulo catálogo de productos -->
+    <article class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition cursor-pointer" onclick="location.href='modules/product-catalog/index.html'" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){location.href='modules/product-catalog/index.html'}">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+      </svg>
+      <h2 class="text-xl font-semibold mb-2 text-indigo-800">Catálogo de Productos</h2>
+      <p class="text-gray-600">Explora y administra el catálogo de productos disponibles en la tienda.</p>
+    </article>
+
+    <!-- Card módulo pagos y checkout -->
+    <article class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition cursor-pointer" onclick="location.href='modules/checkout-payments/index.html'" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){location.href='modules/checkout-payments/index.html'}">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3v3h6v-3c0-1.657-1.343-3-3-3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414" />
+      </svg>
+      <h2 class="text-xl font-semibold mb-2 text-indigo-800">Pagos y Checkout</h2>
+      <p class="text-gray-600">Gestiona el proceso de pago y finalización de compras de forma segura y eficiente.</p>
+    </article>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
