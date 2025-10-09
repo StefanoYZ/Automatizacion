@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 min-h-screen text-gray-100">
+  <header class="bg-white bg-opacity-20 backdrop-blur-md shadow-md py-6">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl font-extrabold">Tienda NovaTech</h1>
+      <p class="mt-1 text-lg opacity-90">¡Hola! Soy el asistente virtual de Tienda NovaTech</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+    <!-- Card: Catálogo de Productos -->
+    <a href="./modules/product-catalog/index.html" class="block bg-white bg-opacity-20 rounded-xl shadow-lg p-6 hover:bg-white hover:bg-opacity-30 transition">
+      <div class="flex items-center space-x-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+          <circle cx="7" cy="7" r="2" />
+          <circle cx="17" cy="12" r="2" />
+          <circle cx="7" cy="17" r="2" />
+        </svg>
+        <div>
+          <h2 class="text-2xl font-semibold">Catálogo de Productos</h2>
+          <p class="mt-1 text-pink-100">Explora y administra todos los productos disponibles en la tienda.</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Card: Pago y Checkout -->
+    <a href="./modules/checkout-payments/index.html" class="block bg-white bg-opacity-20 rounded-xl shadow-lg p-6 hover:bg-white hover:bg-opacity-30 transition">
+      <div class="flex items-center space-x-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-pink-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v6m-4-6v6m8-6v6" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M3 10h18M3 14h18" />
+        </svg>
+        <div>
+          <h2 class="text-2xl font-semibold">Pago y Checkout</h2>
+          <p class="mt-1 text-pink-100">Gestiona los procesos de pago y finalización de compra de manera segura.</p>
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+<script>
+(function(){
+  try {
+    const s = JSON.parse(localStorage.getItem('mvp_session') || 'null');
+    if (!s || !s.user) { window.location.href = 'login.html'; }
+  } catch(e) { window.location.href = 'login.html'; }
+})();
+window.logout = function() {
+  try { localStorage.removeItem('mvp_session'); } catch(e){}
+  window.location.href = 'login.html';
+};
+</script>
+</body>
+</html>
