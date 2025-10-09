@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Productos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml" />
+</head>
+<body class="bg-gradient-to-r from-indigo-300 via-indigo-400 to-indigo-500 min-h-screen text-gray-900">
+  <header class="bg-white bg-opacity-90 shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-indigo-900">Catálogo de Productos</h1>
+      <button onclick="window.history.back()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition">Volver</button>
+    </div>
+  </header>
+  <main class="max-w-7xl mx-auto p-6">
+    <section aria-label="Descripción del módulo">
+      <p class="text-indigo-900 text-lg">Aquí puedes explorar y administrar todos los productos disponibles en Tienda NovaTech. Esta sección está diseñada para facilitar la gestión del inventario y la visualización detallada de cada producto.</p>
+    </section>
+    <section aria-label="Imagen representativa" class="mt-8 flex justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-48 w-48 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+      </svg>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
