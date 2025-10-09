@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Tienda NovaTech</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-indigo-600 text-white p-6 shadow-md">
+    <h1 class="text-2xl font-bold">Tienda NovaTech</h1>
+    <p class="mt-1 text-indigo-200">¡Hola! Soy el asistente virtual de Tienda NovaTech</p>
+  </header>
+  <main class="p-6 max-w-7xl mx-auto">
+    <h2 class="text-xl font-semibold mb-6 text-gray-700">Panel de control</h2>
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <article class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center hover:shadow-lg transition cursor-pointer" onclick="location.href='modules/product-catalog/index.html'" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){location.href='modules/product-catalog/index.html'}">
+        <div class="mb-4 text-indigo-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Catálogo de Productos</h3>
+        <p class="text-gray-600">Explora y administra los productos disponibles en la tienda.</p>
+      </article>
+      <article class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center hover:shadow-lg transition cursor-pointer" onclick="location.href='modules/checkout-payments/index.html'" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){location.href='modules/checkout-payments/index.html'}">
+        <div class="mb-4 text-indigo-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2-1.343-2-3-2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v4m0 0h3m-3 0H9" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Pago y Checkout</h3>
+        <p class="text-gray-600">Gestiona los procesos de pago y finalización de compra.</p>
+      </article>
+    </section>
+  </main>
+  <script>
+    feather.replace();
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
