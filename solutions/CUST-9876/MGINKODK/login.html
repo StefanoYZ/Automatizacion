@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar sesión - Clínica Dental Sonrisa Perfecta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex items-center justify-center">
+  <main class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center mb-6 text-teal-700">Clínica Dental Sonrisa Perfecta</h1>
+    <form id="loginForm" novalidate>
+      <label for="username" class="block text-gray-700 font-semibold mb-2">Usuario</label>
+      <input type="text" id="username" name="username" required class="w-full border border-gray-300 rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Ingrese su usuario" />
+      <label for="password" class="block text-gray-700 font-semibold mb-2">Contraseña</label>
+      <input type="password" id="password" name="password" required class="w-full border border-gray-300 rounded px-3 py-2 mb-6 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Ingrese su contraseña" />
+      <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 rounded transition">Iniciar sesión</button>
+      <p id="errorMsg" class="text-red-600 mt-4 text-center hidden">Por favor, ingrese usuario y contraseña válidos.</p>
+    </form>
+  </main>
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = loginForm.username.value.trim();
+      const password = loginForm.password.value.trim();
+
+      // Validación básica: usuario y contraseña no vacíos
+      if (username === '' || password === '') {
+        errorMsg.textContent = 'Por favor, ingrese usuario y contraseña válidos.';
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+
+      // Simulación de login exitoso (en producción, validar con backend)
+      errorMsg.classList.add('hidden');
+      window.location.href = 'index.html';
+    });
+  </script>
+
+<script>
+document.getElementById('loginForm')?.addEventListener('submit', function(){
+  try{
+    const u = (document.getElementById('username')||{}).value || 'user@example.com';
+    localStorage.setItem('mvp_session', JSON.stringify({user: u, at: Date.now()}));
+  }catch(e){}
+});
+</script>
+<script>
+(async function(){
+  async function getCreds(){
+    try{
+      const res = await fetch('./credentials.json', { cache: 'no-store' });
+      if(!res.ok) throw new Error('No credentials');
+      return await res.json();
+    }catch(_){ return null; }
+  }
+  const form = document.getElementById('loginForm');
+  if(!form) return;
+  const uEl = document.getElementById('username');
+  const pEl = document.getElementById('password');
+  const err = document.getElementById('loginError') || (function(){
+    const p = document.createElement('p');
+    p.id = 'loginError';
+    p.className = 'text-red-600 text-center text-sm mt-2 hidden';
+    p.textContent = 'Usuario o contraseña incorrectos.';
+    form.appendChild(p);
+    return p;
+  })();
+
+  const CREDS = await getCreds();
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const u = (uEl && uEl.value || '').trim();
+    const p = (pEl && pEl.value || '');
+    err.classList.add('hidden');
+    if(!u || !p || !CREDS) { err.classList.remove('hidden'); return; }
+    if(u === CREDS.username && p === CREDS.password){
+      try{ localStorage.setItem('mvp_session', JSON.stringify({ user: u, at: Date.now() })); }catch(__){}
+      window.location.href = 'index.html';
+    } else {
+      err.classList.remove('hidden');
+    }
+  });
+})();
+</script>
+</body>
+</html>
