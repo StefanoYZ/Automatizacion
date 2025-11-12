@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Clínica Dental Sonrisa Perfecta</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex flex-col">
+  <header class="bg-white shadow p-4 flex items-center gap-4">
+    <img src="assets/logo.svg" alt="Logo Clínica Dental Sonrisa Perfecta" class="h-10 w-10" />
+    <h1 class="text-2xl font-bold text-teal-700">Clínica Dental Sonrisa Perfecta</h1>
+  </header>
+  <main class="flex-grow p-6 max-w-7xl mx-auto">
+    <p class="mb-8 text-lg text-white font-semibold">¡Hola! Soy el asistente virtual de Clínica Sonrisa Perfecta</p>
+    <section aria-label="Módulos disponibles" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <article class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-xl transition cursor-pointer" onclick="location.href='modules/appointment-scheduling/index.html'" tabindex="0" onkeypress="if(event.key==='Enter'){location.href='modules/appointment-scheduling/index.html';}">
+        <img src="https://img.icons8.com/fluency/96/000000/calendar--v1.png" alt="Icono de programación de citas" class="mb-4 w-24 h-24" />
+        <h2 class="text-xl font-semibold text-teal-700 mb-2">Programación de Citas</h2>
+        <p class="text-gray-600">Organiza y gestiona tus citas dentales de forma rápida y sencilla.</p>
+      </article>
+    </section>
+  </main>
+  <footer class="bg-white p-4 text-center text-gray-600">
+    &copy; 2024 Clínica Dental Sonrisa Perfecta
+  </footer>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
