@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pagos y checkout - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml" />
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-indigo-700 text-white p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Pagos y checkout</h1>
+    <button onclick="window.location.href='../../index.html'" class="bg-white text-indigo-700 font-semibold px-4 py-2 rounded hover:bg-indigo-100 transition" aria-label="Volver al dashboard">Volver</button>
+  </header>
+  <main class="p-8 flex-grow max-w-5xl mx-auto">
+    <section class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800">Gestiona el proceso de pago y finalización de compra.</h2>
+      <p class="text-gray-600">Aquí podrás administrar métodos de pago, revisar transacciones y completar pedidos.</p>
+      <div class="mt-6 flex justify-center">
+        <svg class="w-48 h-48 text-indigo-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 1.343-3 3v3h6v-3c0-1.657-1.343-3-3-3z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 12v3a6 6 0 0012 0v-3" />
+        </svg>
+      </div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
