@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programación de Citas - Clínica Dental Sonrisa Perfecta</title>
+  <link href="../../../assets/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" href="../../../assets/logo.svg" type="image/svg+xml">
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex flex-col">
+  <header class="bg-white shadow p-4 flex items-center gap-4">
+    <img src="../../../assets/logo.svg" alt="Logo Clínica Dental Sonrisa Perfecta" class="h-10 w-10" />
+    <h1 class="text-2xl font-bold text-teal-700">Programación de Citas</h1>
+  </header>
+  <main class="flex-grow p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
+    <p class="mb-4 text-gray-700">Aquí puedes gestionar tus citas dentales. Esta funcionalidad está en desarrollo.</p>
+    <button onclick="goBack()" class="mt-6 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded transition">Volver</button>
+  </main>
+  <script>
+    function goBack() {
+      window.location.href = '../../../index.html';
+    }
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
