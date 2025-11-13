@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pagos y Checkout - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 min-h-screen text-gray-900">
+  <header class="bg-white bg-opacity-30 backdrop-blur-md sticky top-0 z-10 shadow-md flex items-center justify-between px-6 py-4">
+    <h1 class="text-2xl font-bold">Pagos y Checkout</h1>
+    <button onclick="location.href='../../index.html'" class="bg-white bg-opacity-70 hover:bg-opacity-90 text-gray-900 font-semibold px-4 py-2 rounded-md transition">Volver</button>
+  </header>
+  <main class="max-w-7xl mx-auto p-6">
+    <section aria-label="Descripción del módulo">
+      <p class="mb-4 text-lg">Gestiona el proceso de pago y finalización de compras en Tienda NovaTech. Configura métodos de pago, revisa transacciones y asegura una experiencia segura para tus clientes.</p>
+    </section>
+    <section aria-label="Imagen representativa">
+      <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Icono de pagos y checkout" class="mx-auto max-w-xs" width="150" height="150" />
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
