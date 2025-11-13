@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Academia NovaEdu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-indigo-700 text-white p-6 shadow-md">
+    <h1 class="text-3xl font-bold">Academia NovaEdu</h1>
+    <p class="mt-1 text-indigo-200">¡Bienvenido a la plataforma educativa de NovaEdu!</p>
+  </header>
+  <main class="flex-grow container mx-auto p-6">
+    <section aria-label="Módulos disponibles" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards -->
+      <article class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" tabindex="0" role="link" onclick="location.href='modules/course-management/index.html'" onkeypress="if(event.key==='Enter'){location.href='modules/course-management/index.html'}">
+        <div class="flex items-center space-x-4 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.343 6.586L12 14z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
+          </svg>
+          <h2 class="text-xl font-semibold text-gray-800">Gestión de Cursos</h2>
+        </div>
+        <p class="text-gray-600">Administra y organiza los cursos disponibles para los estudiantes.</p>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" tabindex="0" role="link" onclick="location.href='modules/virtual-classroom/index.html'" onkeypress="if(event.key==='Enter'){location.href='modules/virtual-classroom/index.html'}">
+        <div class="flex items-center space-x-4 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m2 4H7a2 2 0 01-2-2V8a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2z" />
+          </svg>
+          <h2 class="text-xl font-semibold text-gray-800">Aula Virtual</h2>
+        </div>
+        <p class="text-gray-600">Participa en clases en línea y accede a recursos en tiempo real.</p>
+      </article>
+
+      <article class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition cursor-pointer" tabindex="0" role="link" onclick="location.href='modules/student-portal/index.html'" onkeypress="if(event.key==='Enter'){location.href='modules/student-portal/index.html'}">
+        <div class="flex items-center space-x-4 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.75 6.879 2.034M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.071 4.929a10 10 0 11-14.142 0 10 10 0 0114.142 0z" />
+          </svg>
+          <h2 class="text-xl font-semibold text-gray-800">Portal del Estudiante</h2>
+        </div>
+        <p class="text-gray-600">Accede a tus calificaciones, horarios y comunicaciones importantes.</p>
+      </article>
+    </section>
+  </main>
+  <footer class="bg-indigo-700 text-indigo-200 text-center p-4">
+    &copy; 2024 Academia NovaEdu
+  </footer>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
