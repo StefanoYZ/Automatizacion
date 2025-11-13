@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout y Pagos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .icon {
+      width: 64px;
+      height: 64px;
+      stroke-width: 1.5;
+      stroke: #4F46E5;
+      fill: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-indigo-600 text-white p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-3xl font-bold">Checkout y Pagos</h1>
+    <button onclick="goBack()" class="bg-white text-indigo-600 font-semibold px-4 py-2 rounded-md hover:bg-indigo-100 transition" aria-label="Volver al panel de control">Volver</button>
+  </header>
+
+  <main class="flex-grow p-6 max-w-5xl mx-auto">
+    <section class="text-center mb-8">
+      <svg class="icon mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2m8-10h-2M4 12H2m15.364 6.364l-1.414-1.414M6.05 6.05L4.636 4.636m12.728 0l-1.414 1.414M6.05 17.95l-1.414 1.414" />
+      </svg>
+      <p class="text-gray-700 text-lg">Gestiona el proceso de pago y finalización de compra.</p>
+    </section>
+
+    <!-- Contenido del módulo podría ir aquí -->
+  </main>
+
+  <script>
+    function goBack() {
+      window.location.href = '../../index.html';
+    }
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
