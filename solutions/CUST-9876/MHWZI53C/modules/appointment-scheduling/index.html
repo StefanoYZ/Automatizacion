@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendar Citas - Clínica Dental Sonrisa Perfecta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex flex-col">
+  <header class="bg-white shadow p-4 flex items-center justify-between">
+    <h1 class="text-xl font-bold text-teal-700">Agendar Citas</h1>
+    <button onclick="window.history.back()" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md transition">Volver</button>
+  </header>
+  <main class="flex-grow p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md mt-6">
+    <p class="text-gray-700 mb-4">Aquí puedes gestionar y organizar las citas de tus pacientes de forma sencilla y eficiente.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Icono de calendario" class="w-32 h-32 mx-auto mb-6" />
+    <section aria-label="Formulario de agendamiento de citas">
+      <form id="appointmentForm" class="space-y-4">
+        <div>
+          <label for="patientName" class="block font-medium text-gray-700">Nombre del paciente</label>
+          <input type="text" id="patientName" name="patientName" required placeholder="Ej. Juan Pérez" class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-teal-500 focus:ring focus:ring-teal-300 focus:ring-opacity-50" />
+        </div>
+        <div>
+          <label for="appointmentDate" class="block font-medium text-gray-700">Fecha de la cita</label>
+          <input type="date" id="appointmentDate" name="appointmentDate" required class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-teal-500 focus:ring focus:ring-teal-300 focus:ring-opacity-50" />
+        </div>
+        <div>
+          <label for="appointmentTime" class="block font-medium text-gray-700">Hora de la cita</label>
+          <input type="time" id="appointmentTime" name="appointmentTime" required class="mt-1 block w-full rounded-md border border-gray-300 p-2 focus:border-teal-500 focus:ring focus:ring-teal-300 focus:ring-opacity-50" />
+        </div>
+        <button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md transition">Guardar cita</button>
+      </form>
+    </section>
+    <section class="mt-6">
+      <h2 class="text-lg font-semibold text-teal-700 mb-2">Citas agendadas</h2>
+      <ul id="appointmentsList" class="list-disc list-inside text-gray-700"></ul>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('appointmentForm');
+    const appointmentsList = document.getElementById('appointmentsList');
+
+    // Cargar citas guardadas en localStorage
+    const savedAppointments = JSON.parse(localStorage.getItem('appointments') || '[]');
+
+    function renderAppointments() {
+      appointmentsList.innerHTML = '';
+      if (savedAppointments.length === 0) {
+        appointmentsList.innerHTML = '<li>No hay citas agendadas.</li>';
+        return;
+      }
+      savedAppointments.forEach((appt, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${appt.patientName} - ${appt.appointmentDate} a las ${appt.appointmentTime}`;
+        appointmentsList.appendChild(li);
+      });
+    }
+
+    renderAppointments();
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const patientName = form.patientName.value.trim();
+      const appointmentDate = form.appointmentDate.value;
+      const appointmentTime = form.appointmentTime.value;
+
+      if (!patientName || !appointmentDate || !appointmentTime) {
+        alert('Por favor complete todos los campos.');
+        return;
+      }
+
+      savedAppointments.push({ patientName, appointmentDate, appointmentTime });
+      localStorage.setItem('appointments', JSON.stringify(savedAppointments));
+      renderAppointments();
+      form.reset();
+    });
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
