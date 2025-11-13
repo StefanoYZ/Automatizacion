@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout y Pagos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 min-h-screen text-gray-100 flex flex-col">
+  <header class="bg-pink-900 bg-opacity-80 p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-3xl font-extrabold">Checkout y Pagos</h1>
+    <button onclick="location.href='/solutions/CUST-5551/MHWW0X95/index.html'" class="bg-pink-700 hover:bg-pink-800 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-300">Volver</button>
+  </header>
+  <main class="flex-grow p-6">
+    <section class="bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-pink-900">Descripción</h2>
+      <p>Gestiona el proceso de compra y los métodos de pago para tus clientes. Este módulo te permite configurar opciones de pago, revisar transacciones y asegurar una experiencia de compra fluida y segura.</p>
+    </section>
+    <section class="mt-8 bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-semibold mb-4 text-pink-900">Funcionalidades</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Integración con múltiples pasarelas de pago.</li>
+        <li>Gestión de órdenes y facturación.</li>
+        <li>Seguridad y prevención de fraudes.</li>
+        <li>Reportes y análisis de ventas.</li>
+      </ul>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
