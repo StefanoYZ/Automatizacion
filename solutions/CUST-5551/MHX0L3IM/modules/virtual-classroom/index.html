@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aula Virtual - Academia NovaEdu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-indigo-700 text-white p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Aula Virtual</h1>
+    <button onclick="window.location.href='../../index.html'" class="bg-indigo-600 hover:bg-indigo-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-400">Volver</button>
+  </header>
+  <main class="flex-grow container mx-auto p-6">
+    <section>
+      <p class="text-gray-700 text-lg">Participa en clases en línea y accede a recursos en tiempo real.</p>
+      <img src="../../assets/virtual_classroom.svg" alt="Icono de aula virtual" class="mt-6 max-w-xs mx-auto" />
+    </section>
+  </main>
+  <footer class="bg-indigo-700 text-indigo-200 text-center p-4">
+    &copy; 2024 Academia NovaEdu
+  </footer>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
