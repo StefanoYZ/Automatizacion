@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout y Pagos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-indigo-700 text-white p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Checkout y Pagos</h1>
+    <button onclick="window.location.href='../../index.html'" class="bg-indigo-600 hover:bg-indigo-800 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-300">Volver</button>
+  </header>
+  <main class="flex-grow p-6 max-w-4xl mx-auto">
+    <p class="text-gray-700 text-lg">Gestiona el proceso de pago y finalización de compra en Tienda NovaTech.</p>
+    <section class="mt-8 bg-white rounded-lg shadow p-6">
+      <form id="checkoutForm" class="space-y-6" novalidate>
+        <div>
+          <label for="cardName" class="block text-gray-700 font-semibold mb-2">Nombre en la tarjeta</label>
+          <input type="text" id="cardName" name="cardName" required placeholder="Nombre completo" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <p id="cardNameError" class="text-red-600 text-sm mt-1 hidden">Por favor, ingrese el nombre en la tarjeta.</p>
+        </div>
+        <div>
+          <label for="cardNumber" class="block text-gray-700 font-semibold mb-2">Número de tarjeta</label>
+          <input type="text" id="cardNumber" name="cardNumber" required pattern="\d{16}" maxlength="16" placeholder="1234 5678 9012 3456" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          <p id="cardNumberError" class="text-red-600 text-sm mt-1 hidden">Por favor, ingrese un número de tarjeta válido de 16 dígitos.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="expiry" class="block text-gray-700 font-semibold mb-2">Fecha de expiración</label>
+            <input type="month" id="expiry" name="expiry" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <p id="expiryError" class="text-red-600 text-sm mt-1 hidden">Por favor, ingrese una fecha válida.</p>
+          </div>
+          <div>
+            <label for="cvv" class="block text-gray-700 font-semibold mb-2">CVV</label>
+            <input type="text" id="cvv" name="cvv" required pattern="\d{3}" maxlength="3" placeholder="123" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <p id="cvvError" class="text-red-600 text-sm mt-1 hidden">Por favor, ingrese un CVV válido de 3 dígitos.</p>
+          </div>
+        </div>
+        <button type="submit" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded hover:bg-indigo-700 transition">Pagar</button>
+      </form>
+      <p id="successMessage" class="mt-4 text-green-600 font-semibold hidden">Pago realizado con éxito. ¡Gracias por su compra!</p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('checkoutForm');
+    const cardName = document.getElementById('cardName');
+    const cardNumber = document.getElementById('cardNumber');
+    const expiry = document.getElementById('expiry');
+    const cvv = document.getElementById('cvv');
+
+    const cardNameError = document.getElementById('cardNameError');
+    const cardNumberError = document.getElementById('cardNumberError');
+    const expiryError = document.getElementById('expiryError');
+    const cvvError = document.getElementById('cvvError');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      let valid = true;
+
+      if (!cardName.value.trim()) {
+        cardNameError.classList.remove('hidden');
+        valid = false;
+      } else {
+        cardNameError.classList.add('hidden');
+      }
+
+      const cardNumberPattern = /^\d{16}$/;
+      if (!cardNumberPattern.test(cardNumber.value.trim())) {
+        cardNumberError.classList.remove('hidden');
+        valid = false;
+      } else {
+        cardNumberError.classList.add('hidden');
+      }
+
+      if (!expiry.value) {
+        expiryError.classList.remove('hidden');
+        valid = false;
+      } else {
+        expiryError.classList.add('hidden');
+      }
+
+      const cvvPattern = /^\d{3}$/;
+      if (!cvvPattern.test(cvv.value.trim())) {
+        cvvError.classList.remove('hidden');
+        valid = false;
+      } else {
+        cvvError.classList.add('hidden');
+      }
+
+      if (valid) {
+        successMessage.classList.remove('hidden');
+        form.reset();
+      } else {
+        successMessage.classList.add('hidden');
+      }
+    });
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
