@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pagos y checkout - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml" />
+</head>
+<body class="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 min-h-screen text-gray-100">
+  <header class="bg-white bg-opacity-20 backdrop-blur-md sticky top-0 z-10 shadow-md flex items-center justify-between p-4">
+    <h1 class="text-2xl font-bold">Pagos y checkout</h1>
+    <button onclick="window.location.href='../../index.html'" class="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-md transition">Volver</button>
+  </header>
+
+  <main class="max-w-5xl mx-auto p-6">
+    <p class="mb-4">Gestiona el proceso de pago y finalización de compra de manera segura y eficiente.</p>
+    <section aria-label="Opciones de pago" class="bg-white bg-opacity-20 rounded-lg p-6 shadow">
+      <h2 class="text-xl font-semibold mb-4">Opciones de pago disponibles</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Tarjeta de crédito y débito</li>
+        <li>PayPal</li>
+        <li>Transferencia bancaria</li>
+        <li>Pago contra entrega</li>
+      </ul>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
