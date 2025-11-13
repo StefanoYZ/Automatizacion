@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout y Pagos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml" />
+</head>
+<body class="bg-gradient-to-r from-indigo-700 to-purple-800 min-h-screen text-gray-100">
+  <header class="bg-indigo-900 shadow-md py-4">
+    <div class="container mx-auto px-6 flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Checkout y Pagos</h1>
+      <button onclick="goBack()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition">Volver</button>
+    </div>
+  </header>
+  <main class="container mx-auto px-6 py-10">
+    <p class="text-lg">Gestiona el proceso de pago y finalización de compra en esta sección.</p>
+    <section class="mt-8 bg-white bg-opacity-20 rounded-lg p-6 shadow-md max-w-lg mx-auto">
+      <form id="paymentForm" class="space-y-6">
+        <div>
+          <label for="cardName" class="block font-semibold mb-2">Nombre en la tarjeta</label>
+          <input type="text" id="cardName" name="cardName" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Nombre completo" />
+        </div>
+        <div>
+          <label for="cardNumber" class="block font-semibold mb-2">Número de tarjeta</label>
+          <input type="text" id="cardNumber" name="cardNumber" required pattern="\d{16}" maxlength="16" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="1234 5678 9012 3456" inputmode="numeric" />
+        </div>
+        <div class="flex space-x-4">
+          <div class="flex-1">
+            <label for="expiry" class="block font-semibold mb-2">Fecha de expiración</label>
+            <input type="month" id="expiry" name="expiry" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div class="flex-1">
+            <label for="cvv" class="block font-semibold mb-2">CVV</label>
+            <input type="password" id="cvv" name="cvv" required pattern="\d{3}" maxlength="3" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="123" inputmode="numeric" />
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md transition">Procesar Pago</button>
+      </form>
+      <p id="paymentMessage" class="mt-4 text-center font-semibold"></p>
+    </section>
+  </main>
+  <script>
+    const paymentForm = document.getElementById('paymentForm');
+    const paymentMessage = document.getElementById('paymentMessage');
+
+    paymentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!paymentForm.checkValidity()) {
+        paymentMessage.textContent = 'Por favor, complete todos los campos correctamente.';
+        paymentMessage.className = 'mt-4 text-center font-semibold text-red-500';
+        return;
+      }
+
+      // Simular procesamiento de pago
+      paymentMessage.textContent = 'Procesando pago...';
+      paymentMessage.className = 'mt-4 text-center font-semibold text-yellow-400';
+
+      setTimeout(() => {
+        paymentMessage.textContent = 'Pago procesado con éxito. ¡Gracias por su compra!';
+        paymentMessage.className = 'mt-4 text-center font-semibold text-green-400';
+        paymentForm.reset();
+      }, 2000);
+    });
+  </script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
