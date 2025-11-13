@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Productos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-indigo-50 min-h-screen flex flex-col">
+  <header class="bg-indigo-700 text-white p-6 shadow-md flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Catálogo de Productos</h1>
+    <button onclick="window.history.back()" class="bg-indigo-600 hover:bg-indigo-800 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-300">
+      Volver
+    </button>
+  </header>
+  <main class="flex-grow p-6 max-w-5xl mx-auto">
+    <p class="text-indigo-900 text-lg">Aquí puedes explorar y administrar todos los productos disponibles en Tienda NovaTech.</p>
+    <section class="mt-6">
+      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Icono catálogo de productos" class="w-32 h-32 mx-auto opacity-70" />
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
