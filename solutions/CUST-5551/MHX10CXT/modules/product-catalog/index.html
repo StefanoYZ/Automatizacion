@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Productos - Tienda NovaTech</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 min-h-screen text-gray-100">
+  <header class="bg-white bg-opacity-20 backdrop-blur-md sticky top-0 z-10 shadow-md flex items-center justify-between px-6 py-4">
+    <h1 class="text-2xl font-bold">Catálogo de Productos</h1>
+    <button onclick="location.href='../../index.html'" class="bg-white bg-opacity-30 hover:bg-opacity-50 text-gray-900 font-semibold px-4 py-2 rounded-md transition">Volver</button>
+  </header>
+  <main class="max-w-7xl mx-auto p-6">
+    <section aria-label="Descripción del módulo">
+      <p class="mb-4 text-lg">Aquí puedes explorar y administrar todos los productos disponibles en Tienda NovaTech. Añade, edita o elimina productos para mantener tu catálogo actualizado.</p>
+    </section>
+    <section aria-label="Imagen representativa">
+      <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="Icono de catálogo de productos" class="mx-auto max-w-xs" width="150" height="150" />
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
