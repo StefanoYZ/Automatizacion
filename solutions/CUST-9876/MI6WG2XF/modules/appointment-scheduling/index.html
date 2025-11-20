@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendamiento de Citas - Clínica Dental Sonrisa Perfecta</title>
+  <link href="../../../assets/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex flex-col">
+  <header class="bg-white bg-opacity-90 backdrop-blur-md shadow-md py-6">
+    <div class="container mx-auto px-6 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-teal-700">Agendamiento de Citas</h1>
+      <button onclick="location.href='../../../index.html'" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md transition flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="feather feather-arrow-left mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" viewBox="0 0 24 24">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Volver
+      </button>
+    </div>
+  </header>
+  <main class="container mx-auto px-6 py-10 flex-grow text-white">
+    <p>Este módulo permite organizar y gestionar las citas de los pacientes de forma sencilla y eficiente.</p>
+    <section class="mt-8 bg-white bg-opacity-20 rounded-lg p-6 shadow-lg max-w-3xl">
+      <h2 class="text-xl font-semibold mb-4">Funcionalidades principales</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Crear, editar y cancelar citas.</li>
+        <li>Visualizar calendario con citas programadas.</li>
+        <li>Enviar recordatorios automáticos a pacientes.</li>
+        <li>Gestionar disponibilidad de los dentistas.</li>
+      </ul>
+    </section>
+  </main>
+  <script>feather.replace()</script>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
