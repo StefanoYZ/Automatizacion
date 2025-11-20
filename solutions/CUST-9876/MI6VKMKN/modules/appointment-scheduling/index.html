@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Programación de Citas - Clínica Dental Sonrisa Perfecta</title>
+  <link href="../../../assets/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex flex-col">
+  <header class="bg-white bg-opacity-90 backdrop-blur-md shadow-md p-6 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <img src="../../../assets/logo.svg" alt="Logo Clínica Dental Sonrisa Perfecta" class="w-12 h-12" />
+      <h1 class="text-2xl font-bold text-gray-800">Programación de Citas</h1>
+    </div>
+    <button onclick="location.href='../../index.html'" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded transition">Volver</button>
+  </header>
+  <main class="flex-grow p-6 max-w-4xl mx-auto text-white">
+    <p class="mb-4 text-lg">¡Hola! Soy el asistente virtual de Clínica Sonrisa Perfecta</p>
+    <section class="bg-white bg-opacity-20 rounded-lg p-6 shadow-lg">
+      <h2 class="text-2xl font-semibold mb-4">Gestión de citas</h2>
+      <p>Este módulo te permite administrar y agendar las citas de tus pacientes de forma sencilla y rápida.</p>
+      <!-- Aquí se puede extender con funcionalidades reales -->
+    </section>
+  </main>
+  <footer class="text-center text-white py-6">
+    <p>© 2024 Clínica Dental Sonrisa Perfecta</p>
+  </footer>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
