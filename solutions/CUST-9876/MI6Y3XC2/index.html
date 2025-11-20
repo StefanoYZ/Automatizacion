@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard - Clínica Dental Sonrisa Perfecta</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen">
+  <header class="bg-white bg-opacity-80 backdrop-blur-md shadow-md py-6">
+    <div class="container mx-auto px-6">
+      <h1 class="text-3xl font-bold text-teal-700">Clínica Dental Sonrisa Perfecta</h1>
+      <p class="mt-1 text-teal-600">¡Hola! Soy el asistente virtual de Clínica Sonrisa Perfecta</p>
+    </div>
+  </header>
+  <main class="container mx-auto px-6 py-10">
+    <section aria-label="Módulos disponibles">
+      <p class="text-center text-gray-100 italic">Actualmente no hay módulos disponibles.</p>
+    </section>
+  </main>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = './login.html'; }
+  }catch(_){ location.href = './login.html'; }
+})();
+</script>
+</body>
+</html>
