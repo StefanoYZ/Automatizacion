@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar sesión - Clínica Dental Sonrisa Perfecta</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex items-center justify-center">
+  <main class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center text-teal-700">Clínica Dental Sonrisa Perfecta</h1>
+    <form id="loginForm" class="space-y-6">
+      <div>
+        <label for="username" class="block text-sm font-medium text-gray-700">Usuario</label>
+        <input type="text" id="username" name="username" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50" />
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" id="password" name="password" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50" />
+      </div>
+      <button type="submit" class="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 transition">Iniciar sesión</button>
+      <p id="errorMsg" class="text-red-600 text-sm mt-2 hidden" role="alert"></p>
+    </form>
+  </main>
+  <script>
+    const form = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const username = form.username.value.trim();
+      const password = form.password.value.trim();
+      // Validación básica: usuario y contraseña no vacíos y usuario mínimo 3 caracteres
+      if (username.length < 3) {
+        errorMsg.textContent = 'El usuario debe tener al menos 3 caracteres.';
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+      if (password.length < 4) {
+        errorMsg.textContent = 'La contraseña debe tener al menos 4 caracteres.';
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+      // Simulación de login exitoso
+      errorMsg.classList.add('hidden');
+      // Redirigir a index.html
+      window.location.href = 'index.html';
+    });
+  </script>
+
+<script>
+document.getElementById('loginForm')?.addEventListener('submit', function(){
+  try{
+    const u = (document.getElementById('username')||{}).value || 'user@example.com';
+    localStorage.setItem('mvp_session', JSON.stringify({user: u, at: Date.now()}));
+  }catch(e){}
+});
+</script>
+</body>
+</html>
