@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestión de Citas - Clínica Dental Sonrisa Perfecta</title>
+  <link href="../../../assets/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-r from-teal-400 to-blue-500 min-h-screen flex flex-col">
+  <header class="bg-white shadow p-6 flex items-center justify-between">
+    <h1 class="text-2xl font-bold text-teal-700">Gestión de Citas</h1>
+    <button onclick="history.back()" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md transition">Volver</button>
+  </header>
+  <main class="flex-grow p-8 max-w-4xl mx-auto text-white">
+    <p>Este módulo permite organizar y administrar las citas de los pacientes de forma sencilla y eficiente.</p>
+    <section class="mt-6 bg-white bg-opacity-20 rounded-lg p-6 shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Próximas citas</h2>
+      <ul class="list-disc list-inside">
+        <li>Juan Pérez - 10/07/2024 - 10:00 AM</li>
+        <li>María Gómez - 11/07/2024 - 2:30 PM</li>
+        <li>Carlos Ruiz - 12/07/2024 - 9:00 AM</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="text-center p-4 text-white bg-teal-700 mt-auto">
+    &copy; 2024 Clínica Dental Sonrisa Perfecta
+  </footer>
+
+<script>
+(function(){
+  try{
+    const s = JSON.parse(localStorage.getItem('mvp_session')||'null');
+    if(!s || !s.user){ location.href = '../../login.html'; }
+  }catch(_){ location.href = '../../login.html'; }
+})();
+</script>
+</body>
+</html>
